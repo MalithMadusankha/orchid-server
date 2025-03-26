@@ -50,3 +50,5 @@ ultralytics-thop==2.0.14
 urllib3==2.2.1
 Werkzeug==3.0.1
 zipp==3.17.0
+flask_sqlalchemy
+pymysql

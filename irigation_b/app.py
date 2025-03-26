@@ -8,7 +8,7 @@ APP_NAME = 'orchid_irrigation'
 app = Flask(APP_NAME)
 CORS(app)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root@localhost/plant_one'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root@db/plant_one'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)

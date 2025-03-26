@@ -1,0 +1,74 @@
+version: '3.8'
+
+services:
+  mysql-db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: plant_one
+      MYSQL_USER: root
+    volumes:
+      - mysql-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+  fertilizer:
+    build: 
+      context: ./fertilizer
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./fertilizer/results:/app/results
+    environment:
+      - PORT=8000
+    restart: unless-stopped
+
+  irrigation:
+    build: 
+      context: ./irigation_b
+    ports:
+      - "5006:5006"
+    environment:
+      - FLASK_ENV=production
+      - SQLALCHEMY_DATABASE_URI=mysql+pymysql://root:password@mysql-db/plant_one
+    depends_on:
+      - mysql-db
+    restart: unless-stopped
+
+  leaf:
+    build: 
+      context: ./leaf
+    ports:
+      - "5005:5005"
+    volumes:
+      - ./leaf/models:/app/models
+    restart: unless-stopped
+
+  species:
+    build: 
+      context: ./species_d
+    ports:
+      - "5001:5001"
+    environment:
+      - FLASK_ENV=production
+      - SQLALCHEMY_DATABASE_URI=mysql+pymysql://root:password@mysql-db/plant_two
+    depends_on:
+      - mysql-db
+    restart: unless-stopped
+
+  api_gateway:
+    build: 
+      context: ./api_gate
+    ports:
+      - "5000:5000"
+    depends_on:
+      - fertilizer
+      - irrigation
+      - leaf
+      - species
+    restart: unless-stopped
+volumes:
+  mysql-data:
+
+networks:
+  default:
+    driver: bridge
