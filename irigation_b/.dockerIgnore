@@ -27,3 +27,7 @@ __pycache__
 build
 dist
 *.egg-info
+
+# Unnecessary directories
+node_modules
+.pytest_cache

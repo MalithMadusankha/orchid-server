@@ -23,7 +23,15 @@ __pycache__
 *.log
 *.sqlite3
 
+# Machine Learning models
+*.pkl
+*.model
+
 # Build and distribution files
 build
 dist
 *.egg-info
+
+# Unnecessary directories
+node_modules
+.pytest_cache

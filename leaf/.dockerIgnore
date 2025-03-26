@@ -1,0 +1,42 @@
+# Version Control
+.git
+.gitignore
+
+# Virtual Environments
+venv
+.env
+*.env
+
+# Python cache files
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+
+# Development and IDE files
+.vscode
+.idea
+*.swp
+*.swo
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# Model weights (optional - depends on your model distribution strategy)
+# Uncomment if you don't want to include model files in the docker build
+# *.pt
+
+# Build and distribution files
+build
+dist
+*.egg-info
+
+# Machine Learning specific
+*.h5
+*.pkl
+*.model
+
+# Unnecessary directories
+node_modules
+.pytest_cache
