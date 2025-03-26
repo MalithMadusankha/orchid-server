@@ -1,0 +1,19 @@
+# Core Flask dependencies
+flask==3.0.2
+werkzeug==3.0.1
+
+# HTTP request library
+requests==2.31.0
+
+# Production WSGI server (optional, but recommended)
+gunicorn==21.2.0
+
+# Additional recommended dependencies for production
+python-dotenv==1.0.0
+flask-cors==4.0.0
+
+# Monitoring and logging (optional)
+blinker==1.7.0
+
+# Security (optional but recommended)
+python-jose==3.3.0

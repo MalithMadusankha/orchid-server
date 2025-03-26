@@ -1,0 +1,5 @@
+venv\Scripts\activate
+python app.py
+
+https://universe.roboflow.com/metl204/orchid-disease
+https://universe.roboflow.com/silpakorn-viqjg/disease-lfxpy

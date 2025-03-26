@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+ultralytics
+supervision
+roboflow
+joblib
+scikit-learn
+pymongo
