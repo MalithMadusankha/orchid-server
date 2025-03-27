@@ -43,7 +43,12 @@ async def list_results():
 
 app.include_router(fertilizer)
 
-print("<============== Server started ==============>")
+print("""
+╔════════════════════════════════╗
+║ 🚀 FastAPI Server Started! 🚀 ║
+╚════════════════════════════════╝
+""")
+
 
 if __name__ == "__main__":
     import uvicorn
