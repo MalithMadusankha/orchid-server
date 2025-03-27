@@ -33,7 +33,11 @@ app.mount("/results", StaticFiles(directory=RESULTS_DIR, html=True), name="resul
 
 @app.get("/")
 async def read_root():
-    print("<========= Call Default route ==========>")
+    print("""
+    ╔════════════════════════════════╗
+    ║   🚀 Call Default Route  🚀   ║
+    ╚════════════════════════════════╝
+    """)
     return {"message": "Hello !!!, I am FastAPI Server. U can call my API I am here to respond"}
 
 @app.get("/list-results")
