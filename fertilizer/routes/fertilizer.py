@@ -25,7 +25,11 @@ async def upload_images(
     file2: UploadFile = File(...), 
     file3: UploadFile = File(...)
 ):
-    print("<=================== features ===================>")
+    print("""
+    ╔════════════════════════════════╗
+    ║     🚀  Call Features  🚀     ║
+    ╚════════════════════════════════╝
+    """)
 
     # Validate files
     for file in [file1, file2, file3]:
