@@ -1,0 +1,218 @@
+<!-- templates/welcome.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 FastAPI Welcome</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            overflow: hidden;
+        }
+        
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .welcome-box {
+            border: 3px solid #4facfe;
+            border-radius: 15px;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.6);
+            box-shadow: 0 0 30px rgba(79, 172, 254, 0.6);
+            max-width: 600px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .welcome-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                transparent,
+                rgba(79, 172, 254, 0.4),
+                transparent
+            );
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(79, 172, 254, 0.3);
+        }
+        
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        
+        .api-link {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(79, 172, 254, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .api-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(79, 172, 254, 0.6);
+        }
+        
+        .api-link::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to right,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+        
+        .api-link:hover::after {
+            transform: translateX(100%);
+        }
+        
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle var(--duration) infinite ease-in-out;
+            opacity: 0;
+        }
+        
+        .rocket {
+            position: absolute;
+            right: 10%;
+            top: 20%;
+            font-size: 3rem;
+            animation: float 6s infinite ease-in-out;
+        }
+        
+        @keyframes shine {
+            0% {
+                transform: rotate(45deg) translate(-30%, -30%);
+            }
+            100% {
+                transform: rotate(45deg) translate(30%, 30%);
+            }
+        }
+        
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    <div class="container">
+        <div class="welcome-box">
+            <div class="rocket">🚀</div>
+            <h1>FastAPI Server Ready!</h1>
+            <p>Hello! I'm your FastAPI server, fully operational and ready to respond to your API calls.</p>
+            <p>Explore the documentation to discover all available endpoints and features.</p>
+            <a href="/docs" class="api-link">Go to API Documentation</a>
+        </div>
+    </div>
+    
+    <script>
+        // Create stars
+        const starsContainer = document.getElementById('stars');
+        const starCount = 100;
+        
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            
+            // Random properties
+            const size = Math.random() * 3;
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const duration = 2 + Math.random() * 3;
+            const delay = Math.random() * 5;
+            
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            star.style.left = `${x}%`;
+            star.style.top = `${y}%`;
+            star.style.setProperty('--duration', `${duration}s`);
+            star.style.animationDelay = `${delay}s`;
+            
+            starsContainer.appendChild(star);
+        }
+        
+        // Add interactive effect
+        document.querySelector('.welcome-box').addEventListener('mousemove', (e) => {
+            const box = e.currentTarget;
+            const x = e.clientX - box.getBoundingClientRect().left;
+            const y = e.clientY - box.getBoundingClientRect().top;
+            
+            box.style.boxShadow = `
+                ${-(x - box.offsetWidth/2) / 20}px 
+                ${-(y - box.offsetHeight/2) / 20}px 
+                30px rgba(79, 172, 254, 0.6)
+            `;
+        });
+    </script>
+</body>
+</html>

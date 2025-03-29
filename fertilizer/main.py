@@ -1,16 +1,21 @@
-# main
+# main.py
 import os
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-from routes.fertilizer import fertilizer
+from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import JSONResponse
+from fastapi.templating import Jinja2Templates
+from routes.fertilizer import fertilizer
 
 app = FastAPI()
+
+# Setup templates
+templates = Jinja2Templates(directory="templates")
 
 # Dynamically get the absolute path of the 'results' directory
 RESULTS_DIR = os.path.abspath("results")
 print(RESULTS_DIR)
+
 # Ensure the directory exists
 if not os.path.exists(RESULTS_DIR):
     os.makedirs(RESULTS_DIR)
@@ -30,15 +35,17 @@ app.add_middleware(
 
 app.mount("/results", StaticFiles(directory=RESULTS_DIR, html=True), name="results")
 
-
-@app.get("/")
-async def read_root():
+@app.get("/", response_class=HTMLResponse)
+async def read_root(request: Request):
     print("""
     ╔════════════════════════════════╗
     ║   🚀 Call Default Route  🚀   ║
     ╚════════════════════════════════╝
     """)
-    return {"message": "Hello !!!, I am FastAPI Server. U can call my API I am here to respond"}
+    return templates.TemplateResponse(
+        "welcome.html",
+        {"request": request}
+    )
 
 @app.get("/list-results")
 async def list_results():
@@ -52,7 +59,6 @@ print("""
 ║ 🚀 FastAPI Server Started! 🚀 ║
 ╚════════════════════════════════╝
 """)
-
 
 if __name__ == "__main__":
     import uvicorn
