@@ -1,0 +1,18 @@
+version: 0.2
+phases:
+  pre_build:
+    commands:
+      - echo "Logging in to ECR..."
+      - aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_REPO
+  build:
+    commands:
+      - echo "Building Docker image from fertilizer directory..."
+      - cd fertilizer && docker build -t $ECR_REPO:$IMAGE_TAG .
+  post_build:
+    commands:
+      - echo "Pushing image to ECR..."
+      - docker push $ECR_REPO:$IMAGE_TAG
+      - echo "Generating ECS deployment file..."
+      - printf '[{"name":"%s","imageUri":"%s"}]' $ECS_TASK_CONTAINER_NAME $ECR_REPO:$IMAGE_TAG > ../imagedefinitions.json
+artifacts:
+  files: ../imagedefinitions.json
