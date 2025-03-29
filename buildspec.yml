@@ -14,5 +14,7 @@ phases:
       - docker push $ECR_REPO:$IMAGE_TAG
       - echo "Generating ECS deployment file..."
       - printf '[{"name":"%s","imageUri":"%s"}]' $ECS_TASK_CONTAINER_NAME $ECR_REPO:$IMAGE_TAG > imagedefinitions.json
+      - jq empty imagedefinitions.json # Validate the JSON file
+      - echo "ECS deployment file generated successfully."
 artifacts:
   files: imagedefinitions.json
