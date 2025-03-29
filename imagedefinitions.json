@@ -1,6 +1,6 @@
 [
     {
-      "name": "fertilizer-container",
+      "name": "fastapi-container",
       "imageUri": "471112989729.dkr.ecr.eu-north-1.amazonaws.com/malith/fertilizerimg:latest"
     }
   ]
