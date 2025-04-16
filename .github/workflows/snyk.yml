@@ -1,0 +1,21 @@
+name: Snyk Security Scan
+on: [push, pull_request]
+jobs:
+  security-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+      - name: Install Snyk CLI
+        run: npm install -g snyk
+      - name: Run Snyk test (check for vulnerabilities)
+        run: snyk test --file=fertilizer/requirements.txt
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      - name: Monitor project in Snyk (track over time)
+        run: snyk monitor --file=fertilizer/requirements.txt
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
