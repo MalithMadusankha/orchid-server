@@ -60,6 +60,8 @@ print("""
 ╚════════════════════════════════╝
 """)
 
+print("===== Hello Orchid Server ===== \n")
+
 if __name__ == "__main__":
     import uvicorn
     port = int(os.environ.get("PORT", 8000))
