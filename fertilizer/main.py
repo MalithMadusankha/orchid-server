@@ -60,7 +60,7 @@ print("""
 ╚════════════════════════════════╝
 """)
 
-print("===== Hello Orchid Server ===== \n")
+print("===== Hello I am Orchid Server !!! ===== \n")
 
 if __name__ == "__main__":
     import uvicorn
