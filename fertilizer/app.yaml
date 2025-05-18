@@ -1,6 +1,4 @@
-runtime: python310  # Assuming you're using Python 3.10
-
-# ... other configuration options specific to your deployment platform ...
+runtime: python310
 
 # Entrypoint configuration (example)
 entrypoint: uvicorn main:app --host 0.0.0.0 --port $PORT
