@@ -21,7 +21,7 @@ RUN mkdir -p /app/results
 
 # Install any needed packages specified in requirements.txt
 COPY requirements.txt .
-# In your Dockerfile, replace the pip install line with:
+
 RUN pip install --no-cache-dir --default-timeout=1000 -r requirements.txt
 
 # Make port 8000 available to the world outside this container
