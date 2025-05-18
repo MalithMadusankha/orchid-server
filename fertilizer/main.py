@@ -60,7 +60,8 @@ print("""
 ╚════════════════════════════════╝
 """)
 
-print("Hello Orchid")
+print("CTSE Assignment")
+
 
 if __name__ == "__main__":
     import uvicorn
