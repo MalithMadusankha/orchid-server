@@ -19,7 +19,7 @@ MODE_LIVE = 9
 DENDROBIUM = "Dendrobium"
 VANDA = "Vanda"
 PHALAENOPSIS = "Phalaenopsis"
-
+# selected species
 
 @app.route('/emergency-water', methods=['POST'])
 def predict():
