@@ -83,7 +83,7 @@ def schedule_watering():
     # Process the data as needed
     print(data)
     return jsonify({"message": "Schedule received", "data": data}), 200
-
+# success msg code
 @app.route('/api/wateringHistory', methods=['GET'])
 def get_wateringHistory():
 
