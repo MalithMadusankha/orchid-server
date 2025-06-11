@@ -3,7 +3,7 @@ flask==3.0.2
 werkzeug==3.0.1
 
 # HTTP request library
-requests==2.31.0
+requests==2.32.4
 
 # Production WSGI server (optional, but recommended)
 gunicorn==21.2.0
