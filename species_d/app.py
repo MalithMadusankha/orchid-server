@@ -109,6 +109,8 @@ def predict():
 
     print(humidity , temperature, light)
 
+    print("Hello Docker")
+
     new_data = np.array([[humidity, temperature, light]])
 
     prediction = start_predict(new_data)
