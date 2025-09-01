@@ -57,6 +57,10 @@ def grow_light():
     return jsonify(result)
 
 
+print("Hello Docker")
+
+
+
 @app.route('/uvlight', methods=['POST'])
 def upload_file_uv():
     if 'file1' not in request.files:
