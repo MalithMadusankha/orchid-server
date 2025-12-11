@@ -17,3 +17,4 @@ blinker==1.7.0
 
 # Security (optional but recommended)
 python-jose==3.3.0
+urllib3>=2.6.0 # not directly required, pinned by Snyk to avoid a vulnerability
