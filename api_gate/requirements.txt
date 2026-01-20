@@ -1,6 +1,6 @@
 # Core Flask dependencies
 flask==3.0.2
-werkzeug==3.0.1
+werkzeug==3.1.5
 
 # HTTP request library
 requests==2.31.0
@@ -17,3 +17,5 @@ blinker==1.7.0
 
 # Security (optional but recommended)
 python-jose==3.3.0
+pyasn1>=0.6.2 # not directly required, pinned by Snyk to avoid a vulnerability
+urllib3>=2.6.3 # not directly required, pinned by Snyk to avoid a vulnerability
